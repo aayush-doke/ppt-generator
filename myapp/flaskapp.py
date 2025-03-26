@@ -2,15 +2,18 @@ import os
 from flask import Flask, render_template, url_for, flash, redirect, request, send_from_directory, abort, jsonify
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
-from forms import RegistrationForm, LoginForm
+
+from myapp.forms import RegistrationForm, LoginForm
 from flask_bcrypt import Bcrypt
-from database import db
-from models import User
-from utils.gpt_generate import chat_development
-from utils.text_pp import parse_response, create_ppt
+
+from myapp.database import db
+
+from myapp.models import User
+from myapp.utils.gpt_generate import chat_development
+from myapp.utils.text_pp import parse_response, create_ppt
 from dotenv import load_dotenv
 
-load_dotenv()  # This loads the .env file
+load_dotenv(dotenv_path="C:\\Users\\aayus\\Downloads\\PowerPoint-Generator-Python-Project-main\\PowerPoint-Generator-Python-Project-main\\.env")  # This loads the .env file
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
